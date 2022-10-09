@@ -4,6 +4,10 @@ export LANG=en_US.UTF-8
 export LC_COLLATE=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
+export VISUAL=vim
+export EDITOR=vim
+export GIT_EDITOR=vim
+
 export HISTFILE=${HOME}/.zsh_history  # set your own history file
 
 alias la="ls -a"
