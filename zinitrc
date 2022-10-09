@@ -32,9 +32,6 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 # Add
-# pure
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
 # terminalで使うらしいもの
 # zinit light chrissicool/zsh-256color
 # 補完
