@@ -1,0 +1,3 @@
+[submodule "zsh-add"]
+	path = zsh-add
+	url = git@github.com:h-akira/zsh-add.git
