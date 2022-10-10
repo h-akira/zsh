@@ -48,7 +48,7 @@ if [ -n "$LS_COLORS" ]; then
   # 補完候補も色付
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 else
-  echo "Failded to export LS_COLRS" 
+  echo "Failed to export LS_COLRS" 
 fi
 alias la="ls -a"
 alias ll="ls -l"
