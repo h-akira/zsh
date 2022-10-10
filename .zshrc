@@ -21,16 +21,34 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 function history-all { history -E 1 }
 
+# 補完を有効化
+autoload -Uz compinit && compinit
+
+# 大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# 矢印で候補を選べるようにする
+zstyle ':completion:*:default' menu select=1
+
 # ls
 if [[ "$(uname -a)" == *"Darwin"* ]]; then
-  eval `gdircolors ${ZDOTDIR}/dircolors -b`
-  alias ls="gls -F --color=auto"
-elif [[ "$(uname -a)" == *"Linux"* ]]; then
-  eval `dircolors ${ZDOTDIR}/dircolors -b`
+  alias dircolors="gdircolors"
+  alias ls="gls"
+fi
+eval `dircolors ${ZDOTDIR}/dircolors -b`
+if [ -z "$LS_COLORS" ]; then
+  echo "LS_COLRS is empty. Read ~/.dircolors ." 
+  if [ ! -e ${HOME}/.dircolors ]; then
+    echo "Create ~/.dircolors ."
+    dircolors -p > ${HOME}/.dircolors
+  fi
+  eval `dircolors ${HOME}/.dircolors -b`
+fi
+if [ -n "$LS_COLORS" ]; then
   alias ls="ls -F --color=auto"
+  # 補完候補も色付
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 else
-  echo "OS: $(uname -a)"
-  echo "not Linux or Darwin(Mac)"
+  echo "Failded to export LS_COLRS" 
 fi
 alias la="ls -a"
 alias ll="ls -l"
@@ -45,14 +63,6 @@ function chpwd() { ls }
 # Python
 export PYTHONDONTWRITEBYTECODE=1
 
-# 補完を有効化
-autoload -Uz compinit && compinit
-# 大文字小文字を区別しない
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-# 矢印で候補を選べるようにする
-zstyle ':completion:*:default' menu select=1
-# 補完候補に色付け
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # コマンドラインでも#でコメントアウト
 setopt interactive_comments
