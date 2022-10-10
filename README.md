@@ -20,6 +20,7 @@ chsh -s $(which zsh)
 - プラグインの更新: `zinit update`
 - Powerlebel10kの再設定: `p10k configure`
   - 最後の`zshrc`の問は`n`
+- dircolorsはデフォルトからシンボリックリンクのみ31（赤）から36（シアン）に変更
 
 ## リンク
 - [Zinit](https://github.com/zdharma-continuum/zinit)

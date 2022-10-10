@@ -21,13 +21,12 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 function history-all { history -E 1 }
 
-
-# alias
+# ls
+eval `dircolors ${ZDOTDIR}/dircolors -b`
 alias ls="ls -F --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
-alias ka="k -a"
 
 # cd無しで移動
 setopt AUTO_CD
