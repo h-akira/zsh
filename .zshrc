@@ -47,10 +47,12 @@ zstyle ':completion:*:default' menu select=1
 # 補完候補に色付け
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# コマンドラインでも#でコメントアウト
+setopt interactive_comments
+
 source ${ZDOTDIR}/add.zshrc
 source ${ZDOTDIR}/zinitrc
 source ${ZDOTDIR}/bindkeyrc
-
 
 # To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
 [[ ! -f ~/.zsh/.p10k.zsh ]] || source ~/.zsh/.p10k.zsh
