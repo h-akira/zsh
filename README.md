@@ -7,7 +7,7 @@ ln -sf ~/.zsh/.zshrc ~/.zshrc
 ln -sf ~/.zsh/zsh-add/${マシンごとの設定ファイル} ~/.zsh/add.zshrc
 exec zsh
 ```
-（必要に応じて）ログインシェルを変更：
+（必要に応じて）ログインシェルを変更:
 ```
 chsh -s $(which zsh)
 ```
@@ -15,6 +15,11 @@ chsh -s $(which zsh)
   - zsh-add（サブモジュール）からシンボリックリンクを貼る
   - zsh-addは非公開
 
+## メモ
+- Zinitnの更新: `zinit self-update`
+- プラグインの更新: `zinit update`
+- Powerlebel10kの再設定: `p10k configure`
+  - 最後の`zshrc`の問は`n`
 
 ## リンク
 - [Zinit](https://github.com/zdharma-continuum/zinit)
