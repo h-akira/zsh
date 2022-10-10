@@ -23,7 +23,8 @@ function history-all { history -E 1 }
 
 # ls
 if [[ "$(uname -a)" == *"Darwin"* ]]; then
-  alias ls="ls -G"
+  eval `gdircolors ${ZDOTDIR}/dircolors -b`
+  alias ls="gls -F --color=auto"
 elif [[ "$(uname -a)" == *"Linux"* ]]; then
   eval `dircolors ${ZDOTDIR}/dircolors -b`
   alias ls="ls -F --color=auto"
