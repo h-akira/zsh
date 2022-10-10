@@ -22,14 +22,21 @@ export SAVEHIST=100000
 function history-all { history -E 1 }
 
 
+# alias
 alias ls="ls -F --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
 alias ka="k -a"
 
-export PYTHONDONTWRITEBYTECODE=1
+# cd無しで移動
+setopt AUTO_CD
+
+# cd時にls
 function chpwd() { ls }
+
+# Python
+export PYTHONDONTWRITEBYTECODE=1
 
 # 補完を有効化
 autoload -Uz compinit && compinit
