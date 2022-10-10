@@ -22,8 +22,15 @@ export SAVEHIST=100000
 function history-all { history -E 1 }
 
 # ls
-eval `dircolors ${ZDOTDIR}/dircolors -b`
-alias ls="ls -F --color=auto"
+if [[ "$(uname -a)" == *"Darwin"* ]]; then
+  alias ls="ls -G"
+elif [[ "$(uname -a)" == *"Linux"* ]]; then
+  eval `dircolors ${ZDOTDIR}/dircolors -b`
+  alias ls="ls -F --color=auto"
+else
+  echo "OS: $(uname -a)"
+  echo "not Linux or Darwin(Mac)"
+fi
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
