@@ -19,6 +19,7 @@ alias ls="ls -F --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
+alias ka="k -a"
 
 export PYTHONDONTWRITEBYTECODE=1
 function chpwd() { ls }
@@ -34,4 +35,5 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 source ${ZDOTDIR}/add.zshrc
 source ${ZDOTDIR}/zinitrc
+source ${ZDOTDIR}/bindkeyrc
 
