@@ -2,9 +2,9 @@
 ## Setting
 ```
 cd
-git clone --recursive git@github.com:h-akira/zsh.git ~/.zsh
-ln -sf ~/.zsh/.zshrc ~/.zshrc
-ln -sf ~/.zsh/zsh-add/${マシンごとの設定ファイル} ~/.zsh/add.zshrc
+git clone --recursive git@github.com:h-akira/zsh.git .zsh
+ln -sf .zsh/.zshrc ~/.zshrc
+ln -sf .zsh/zsh-add/${マシンごとの設定ファイル} .zsh/add.zshrc
 exec zsh
 ```
 （必要に応じて）ログインシェルを変更:
