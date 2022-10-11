@@ -34,9 +34,9 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*:default' menu select=1
 
 # ls
-if [[ "$(which dircolors)" == *"not found"* ]]; then
+if [[ "$(type dircolors)" == *"not found"* ]]; then
   if [[ "$(uname -a)" == *"Darwin"* ]]; then
-    if [[ "$(which gdircolors)" == *"not found"* ]]; then
+    if [[ "$(type gdircolors)" == *"not found"* ]]; then
       echo "ERROR: dircolors and gdircolors not found"
     else 
       alias dircolors="gdircolors"
@@ -55,7 +55,7 @@ if [ -z "$LS_COLORS" ]; then
   eval `dircolors ${HOME}/.dircolors -b`
 fi
 if [ -n "$LS_COLORS" ]; then
-  if [[ "$(which gls)" == *"not found"* ]]; then
+  if [[ "$(type gls)" == *"not found"* ]]; then
     alias ls="ls -F --color=auto"
   else
     alias ls="gls -F --color=auto"
