@@ -22,7 +22,7 @@ export SAVEHIST=100000
 function history-all { history -E 1 }
 
 # 読み込み
-# Macの場合，brewのパスをここで通すのでgdircolorsが使えるのもこれ以降
+  # 特にMacの場合，brewのパスをここで通すので先にする必要がある
 source ${ZDOTDIR}/add.zshrc
 
 # 補完を有効化
@@ -34,36 +34,30 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*:default' menu select=1
 
 # ls
-if [[ "$(type dircolors)" == *"not found"* ]]; then
-  if [ "$(uname)" = "Darwin" ]; then
-    if [[ "$(which gdircolors)" == *"not found"* ]]; then
-      echo "ERROR: dircolors and gdircolors not found"
-    else 
-      alias dircolors="gdircolors"
-    fi
-  else
-    echo "ERROR: dircolors not found"
-  fi
-fi
-eval `dircolors ${ZDOTDIR}/dircolors -b`
-if [ -z "$LS_COLORS" ]; then
-  echo "LS_COLORS is empty. Read ~/.dircolors ." 
-  if [ ! -e ${HOME}/.dircolors ]; then
-    echo "Create ~/.dircolors ."
-    dircolors -p > ${HOME}/.dircolors
-  fi
-  eval `dircolors ${HOME}/.dircolors -b`
-fi
-if [ -n "$LS_COLORS" ]; then
-  if [[ "$(type gls)" == *"not found"* ]]; then
-    alias ls="ls -F --color=auto"
-  else
-    alias ls="gls -F --color=auto"
-  fi
-  # 補完候補も着色
-  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+if [ "$(uname)" = "Darwin" ] && [[ ! "$PATH" == *"opt/coreutils/libexec/gnubin"* ]]; then
+  echo "Plese add gnubin to PATH"
+  alias ls="ls -FG"
 else
-  echo "Failed to export LS_COLORS" 
+  if [[ "$(type dircolors)" == *"not found"* ]]; then
+    echo "dircolors not found"
+  else
+    eval `dircolors ${ZDOTDIR}/dircolors -b`
+    if [ -z "$LS_COLORS" ]; then
+      echo "LS_COLORS is empty. Read ~/.dircolors ." 
+      if [ ! -e ${HOME}/.dircolors ]; then
+        echo "Create ~/.dircolors ."
+        dircolors -p > ${HOME}/.dircolors
+      fi
+      eval `dircolors ${HOME}/.dircolors -b`
+    fi
+    if [ -n "$LS_COLORS" ]; then
+      # 補完候補も着色
+      zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    else
+      echo "Failed to export LS_COLORS" 
+    fi
+  fi
+  alias ls="ls -F --color=auto"
 fi
 alias la="ls -a"
 alias ll="ls -l"
