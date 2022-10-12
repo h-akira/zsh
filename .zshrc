@@ -35,7 +35,7 @@ zstyle ':completion:*:default' menu select=1
 
 # ls
 if [[ "$(which dircolors)" == *"not found"* ]]; then
-  if [[ "$(uname -a)" == *"Darwin"* ]]; then
+  if [[ "$(uname)" = "Darwin" ]]; then
     if [[ "$(which gdircolors)" == *"not found"* ]]; then
       echo "ERROR: dircolors and gdircolors not found"
     else 
