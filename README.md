@@ -2,9 +2,8 @@
 ## Setting
 ```
 cd
-git clone --recursive git@github.com:h-akira/zsh.git .zsh
-ln -sf .zsh/.zshrc ~/.zshrc
-ln -sf .zsh/zsh-add/${マシンごとの設定ファイル} .zsh/add.zshrc
+git clone git@github.com:h-akira/zsh.git .zsh
+ln -sf .zsh/dot.zshrc ~/.zshrc
 exec zsh
 ```
 （必要に応じて）ログインシェルを変更:
@@ -15,9 +14,6 @@ Macの場合は以下が必要:
 ```
 brew install coreutils
 ```
-- `add.zshrc`はマシンごとに異なる設定を追加でするためのもの
-  - zsh-add（サブモジュール）からシンボリックリンクを貼る
-  - zsh-addは非公開
 - `coreutils`を入れることでMacでもGNU版の`ls`を用いる事ができ，設定を流用できる．
 
 ## メモ
@@ -30,3 +26,4 @@ brew install coreutils
 ## リンク
 - [Zinit](https://github.com/zdharma-continuum/zinit)
 - [Powerlebel10k](https://github.com/romkatv/powerlevel10k)
+- [zsh-add](https://github.com/h-akira/zsh-add)
