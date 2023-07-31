@@ -23,7 +23,7 @@ function history-all { history -E 1 }
 
 # 読み込み
 # 特にMacの場合，brewのパスをここで通すので先にする必要がある
-if [ -f ~/add.zshrc ]; then
+if [ -f ${ZDOTDIR}/add.zshrc ]; then
   source ${ZDOTDIR}/add.zshrc
 fi
 
