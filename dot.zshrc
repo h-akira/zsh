@@ -22,8 +22,10 @@ export SAVEHIST=100000
 function history-all { history -E 1 }
 
 # 読み込み
-  # 特にMacの場合，brewのパスをここで通すので先にする必要がある
-source ${ZDOTDIR}/add.zshrc
+# 特にMacの場合，brewのパスをここで通すので先にする必要がある
+if [ -f ~/add.zshrc ]; then
+  source ${ZDOTDIR}/add.zshrc
+fi
 
 # 補完を有効化
 autoload -Uz compinit && compinit
