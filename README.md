@@ -16,7 +16,19 @@ brew install coreutils
 ```
 - `coreutils`を入れることでMacでもGNU版の`ls`を用いる事ができ，設定を流用できる．
 
-## メモ
+## 色を変える
+`.p10k.zsh`の以下の部分の数字を変えることで
+カレントディレクトリが表示される部分の
+色を変えることができる．
+```
+typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
+```
+数字と色の対応は以下のコマンドで確認できる．
+```
+for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+```
+
+## その他
 - Zinitnの更新: `zinit self-update`
 - プラグインの更新: `zinit update`
 - Powerlebel10kの再設定: `p10k configure`
