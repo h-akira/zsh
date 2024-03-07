@@ -2,7 +2,7 @@
 ## Setting
 ```
 cd
-git clone https://github.com/h-akira/zsh.git .zsh
+git clone git@github.com:h-akira/zsh.git
 ln -sf .zsh/dot.zshrc ~/.zshrc
 exec zsh
 ```
